@@ -70,6 +70,7 @@ function handleSubmit() {
             label="Post title"
             label-hidden
             placeholder="Add a title to your post"
+            auto-complete="off"
           />
           <TextArea
             :rows="5"

@@ -46,6 +46,7 @@ function handleSubmit(e: Event) {
         label="Name"
         label-hidden
         placeholder="Person McSurname"
+        auto-complete="off"
       />
 
       <PrimaryButton id="new-user-submit" size="sm" class="ml-1" type="submit" :disabled="!store.initialised">

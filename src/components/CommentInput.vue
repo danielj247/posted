@@ -73,6 +73,7 @@ function handleSubmit() {
             class="w-full"
             label="Comment title"
             label-hidden
+            auto-complete="off"
             placeholder="Add a title to your comment"
           />
           <TextArea

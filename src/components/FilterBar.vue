@@ -110,6 +110,7 @@ const open = ref(false);
                 label="Search posts"
                 label-hidden
                 placeholder="Search posts"
+                auto-complete="off"
                 input-class="pl-10"
                 :model-value="store.filter.search || ''"
                 @update:model-value="store.setFilterSearch"

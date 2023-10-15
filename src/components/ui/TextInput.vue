@@ -8,6 +8,7 @@ const props = defineProps<{
   name?: string;
   id?: string;
   inputClass?: string;
+  autoComplete?: string;
 }>();
 
 const emit = defineEmits<{
@@ -37,6 +38,7 @@ const handleChange = (event: Event) => {
         :placeholder="props.placeholder"
         :value="props.modelValue"
         @input="handleChange"
+        :autocomplete="props.autoComplete"
       />
     </div>
     <p v-if="props.description" class="mt-2 text-sm text-zinc-500">{{ props.description }}</p>
