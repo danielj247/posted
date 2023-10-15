@@ -1,5 +1,5 @@
-# posted
- 
+![posted](https://github.com/danielj247/posted/assets/92366070/d76266b5-f084-4823-8b3e-cfe5e9d1dd42)
+
 I wanted to create something with some identity, so decided on the name **posted** and worked from there. I like clean and minimal UI, so I utilised styles from Tailwind UI and shadcn components (both of which I love) with custom styles to create **posted** as a technical test for Netwatch.
 
 The store will initialise by retrieving users, posts and comments from the [JSON Placeholder API](https://jsonplaceholder.typicode.com/). Then the user can continue using the application from that snapshot.
