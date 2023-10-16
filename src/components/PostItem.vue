@@ -138,7 +138,7 @@ function handleDeletePost() {
             },
             {
               name: 'Copy link',
-              onClick: () => handleCopyLink,
+              onClick: handleCopyLink,
             },
             ...(isUsersPost
               ? [
