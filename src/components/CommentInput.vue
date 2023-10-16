@@ -23,6 +23,7 @@ const store = useStore();
 
 const name = ref(props.comment?.name || "");
 const body = ref(props.comment?.body || "");
+const selectedTabIndex = ref(0);
 
 const prefix = computed(() => (props.idPrefix ? props.idPrefix + "-" : ""));
 
@@ -33,12 +34,14 @@ function handleSubmit() {
 
   name.value = "";
   body.value = "";
+
+  selectedTabIndex.value = 0;
 }
 </script>
 
 <template>
   <form @submit.prevent="handleSubmit">
-    <TabGroup>
+    <TabGroup :selected-index="selectedTabIndex" @change="(index) => (selectedTabIndex = index)">
       <TabList class="flex items-center">
         <Tab as="template" v-slot="{ selected }">
           <button
