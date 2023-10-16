@@ -114,7 +114,7 @@ function handleDeletePost() {
         <button
           v-if="props.data.comments"
           :id="`${props.data.id}-comments-btn`"
-          @click="toggleComments"
+          @click.prevent="toggleComments"
           class="flex w-full flex-none justify-between gap-x-8 sm:w-auto h-5 p-2 box-content bg-transparent stroke-zinc-600 hover:stroke-zinc-900 hover:bg-zinc-100 rounded"
         >
           <div class="flex gap-x-2.5">
