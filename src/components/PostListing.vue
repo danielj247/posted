@@ -28,6 +28,6 @@ const { viewableItems, increment, finished } = useLoadMore(items, 5);
   <div v-else class="text-center">
     <p><SearchXIcon class="mr-1 -mt-0.5 inline" /> No posts found</p>
 
-    <PrimaryButton class="mt-5" @click="store.resetFilters">Reset filters</PrimaryButton>
+    <SecondaryButton class="mt-5" @click="store.resetFilters">Reset filters</SecondaryButton>
   </div>
 </template>
