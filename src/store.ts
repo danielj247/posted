@@ -102,14 +102,14 @@ export const useStore = defineStore("main", () => {
 
   // filter out post by id in posts array
   function deletePost(postId: number) {
-    if (!postId || currentUser.value.id !== posts.value.find((post) => post.id === postId)?.userId) return;
+    if (!postId || currentUserOwnsPost(postId)) return;
 
     posts.value = posts.value.filter((post) => post.id !== postId);
   }
 
   // find post by id and reassign with new data
   function editPost(postId: number, data: Pick<Post, "title" | "body">) {
-    if (!postId || !data || currentUser.value.id !== posts.value.find((post) => post.id === postId)?.userId) return;
+    if (!postId || !data || currentUserOwnsPost(postId)) return;
 
     const postIndex = posts.value.findIndex((post) => post.id === postId);
 
@@ -137,19 +137,14 @@ export const useStore = defineStore("main", () => {
 
   // filter out comment by id in comments array
   function deleteComment(commentId: number) {
-    if (!commentId || currentUser.value.id !== comments.value.find((comment) => comment.id === commentId)?.user?.id)
-      return;
+    if (!commentId || currentUserOwnsComment(commentId)) return;
 
     comments.value = comments.value.filter((comment) => comment.id !== commentId);
   }
 
   // find comment by id and reassign with new data
   function editComment(commentId: number, data: Pick<Comment, "body" | "name">) {
-    if (
-      !commentId ||
-      !data ||
-      currentUser.value.id !== comments.value.find((comment) => comment.id === commentId)?.user?.id
-    ) {
+    if (!commentId || !data || currentUserOwnsComment(commentId)) {
       return;
     }
 
@@ -199,6 +194,15 @@ export const useStore = defineStore("main", () => {
     currentUser.value = null;
 
     router.push("/login");
+  }
+  // check if current user owns post by postId
+  function currentUserOwnsPost(postId: number) {
+    return currentUser.value.id !== posts.value.find((post) => post.id === postId)?.userId;
+  }
+
+  // check if current user owns comment by commentId
+  function currentUserOwnsComment(commentId: number) {
+    return currentUser.value.id !== comments.value.find((comment) => comment.id === commentId)?.user?.id;
   }
 
   // internal function to generate user details and add to users array
@@ -322,6 +326,10 @@ export const useStore = defineStore("main", () => {
     addComment,
     deleteComment,
     editComment,
+
+    // helper actions
+    currentUserOwnsPost,
+    currentUserOwnsComment,
 
     // initialize
     init,
